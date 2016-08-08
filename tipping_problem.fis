@@ -1,0 +1,43 @@
+[System]
+Name='tipping_problem'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=6
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='service'
+Range=[0 10]
+NumMFs=3
+MF1='poor':'trimf',[0 0 5]
+MF2='good':'trimf',[2.5 5 7.5]
+MF3='excellent':'trimf',[5 10 10]
+
+[Input2]
+Name='food'
+Range=[0 10]
+NumMFs=2
+MF1='rancid':'gaussmf',[1.7 2.64809523809524]
+MF2='delicious':'gaussmf',[1.7 7.32804232804233]
+
+[Output1]
+Name='tip'
+Range=[0 30]
+NumMFs=3
+MF1='cheap':'trimf',[0 0 15]
+MF2='average':'trimf',[7.5 15 22.5]
+MF3='generous':'trimf',[15 30 30]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 2 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1

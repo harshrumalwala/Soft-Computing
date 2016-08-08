@@ -1,0 +1,32 @@
+[System]
+Name='swimming pool'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='temp'
+Range=[0 40]
+NumMFs=3
+MF1='hot':'trapmf',[15 25 40 40]
+MF2='warm':'trimf',[7 15 25]
+MF3='cold':'trapmf',[0 0 7 15]
+
+[Output1]
+Name='swimmingpool'
+Range=[0 800]
+NumMFs=2
+MF1='crowd':'trapmf',[100 500 800 800]
+MF2='quiet':'trapmf',[0 0 100 500]
+
+[Rules]
+1, 1 (1) : 2
+2, 1 (1) : 2
+3, 2 (1) : 2
