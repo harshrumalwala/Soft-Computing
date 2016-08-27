@@ -1,0 +1,69 @@
+[System]
+Name='inverted pendulum problem'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='angularVelocity'
+Range=[-10 10]
+NumMFs=5
+MF1='NH':'trimf',[-15 -10 -5]
+MF2='NL':'trimf',[-10 -5 0]
+MF3='ZERO':'trimf',[0 0 0]
+MF4='PL':'trimf',[0 5 10]
+MF5='PH':'trimf',[5 10 15]
+
+[Input2]
+Name='angle'
+Range=[-180 180]
+NumMFs=5
+MF1='NH':'trimf',[-270 -180 -90]
+MF2='NL':'trimf',[-180 -90 0]
+MF3='ZERO':'trimf',[0 0 0]
+MF4='PL':'trimf',[0 90 180]
+MF5='PH':'trimf',[90 180 270]
+
+[Output1]
+Name='force'
+Range=[-1000 1000]
+NumMFs=5
+MF1='NH':'trimf',[-1500 -1000 -500]
+MF2='NL':'trimf',[-1000 -500 0]
+MF3='ZERO':'trimf',[0 0 0]
+MF4='PL':'trimf',[0 500 1000]
+MF5='PH':'trimf',[500 1000 1500]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 1 (1) : 1
+1 4, 2 (1) : 1
+1 5, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+2 4, 3 (1) : 1
+2 5, 4 (1) : 1
+3 1, 1 (1) : 1
+3 2, 2 (1) : 1
+3 3, 3 (1) : 1
+3 4, 4 (1) : 1
+3 5, 5 (1) : 1
+4 1, 2 (1) : 1
+4 2, 3 (1) : 1
+4 3, 4 (1) : 1
+4 4, 5 (1) : 1
+4 5, 5 (1) : 1
+5 1, 3 (1) : 1
+5 2, 4 (1) : 1
+5 3, 5 (1) : 1
+5 4, 5 (1) : 1
+5 5, 5 (1) : 1

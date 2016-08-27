@@ -1,0 +1,33 @@
+[System]
+Name='motor speed-voltage'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='speed'
+Range=[0 3000]
+NumMFs=3
+MF1='tooSlow':'trimf',[-1200 0 1200]
+MF2='justRight':'trimf',[300 1500 2700]
+MF3='tooFast':'trimf',[1800 3000 4200]
+
+[Output1]
+Name='voltage'
+Range=[0 3]
+NumMFs=3
+MF1='lessVoltage':'trimf',[-1.2 0 1.2]
+MF2='noChange':'trimf',[0.3 1.5 2.7]
+MF3='moreVoltage':'trimf',[1.8 3 4.2]
+
+[Rules]
+1, 3 (1) : 1
+2, 2 (1) : 1
+3, 1 (1) : 1
